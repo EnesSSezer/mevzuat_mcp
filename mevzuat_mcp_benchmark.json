@@ -1,0 +1,695 @@
+[
+  {
+    "id": "MEV-001",
+    "difficulty_level": 1,
+    "is_formal_language": true,
+    "category": "Anayasa Hukuku",
+    "query_intent": "Seçilme Yaşı ve Kısıtlılık Halleri Tespiti",
+    "question": "Türkiye Cumhuriyeti Anayasası'na göre milletvekili seçilebilme yaşı kaçtır ve hangi haller kısıtlayıcı sebeptir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "2709",
+      "law_title": "Türkiye Cumhuriyeti Anayasası",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "76"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "Anayasa 76",
+      "milletvekili seçilme yaşı",
+      "seçilmeyi engelleyen suçlar",
+      "milletvekilliği engelleri"
+    ],
+    "gold_answer": "Türkiye Cumhuriyeti Anayasası'nın 76. maddesine göre milletvekili seçilebilme yaşı 18'dir. Milletvekili seçilmeyi kısıtlayan başlıca sebepler şunlardır: İlkokul mezunu olmamak, kısıtlı olmak, askerlikle ilişiği bulunmak, kamu hizmetinden yasaklı olmak, taksirli suçlar hariç toplam bir yıl veya daha fazla hapis cezası almış olmak; zimmet, irtikâp, rüşvet, hırsızlık, dolandırıcılık, sahtecilik, inancı kötüye kullanma, dolanlı iflas gibi yüz kızartıcı suçlar ile kaçakçılık, ihaleye fesat karıştırma, devlet sırlarını açığa vurma ve terör eylemlerine katılma veya bu eylemleri tahrik/teşvik etme suçlarından hüküm giymiş olmaktır.",
+    "evaluation_criteria": [
+      "Milletvekili seçilme yaşının 18 olduğunun belirtilmesi",
+      "Anayasa Madde 76 referansının verilmesi",
+      "En az ilkokul mezunu olma şartının sayılması",
+      "Kısıtlılar ve kamu hizmetinden yasaklıların seçilemeyeceğinin ifade edilmesi",
+      "Taksirli suçlar hariç 1 yıl veya üzeri hapis cezası alanların engellendiğinin belirtilmesi",
+      "Yüz kızartıcı suçlar (rüşvet, hırsızlık, dolandırıcılık vb.) ve terör suçlarının kısıtlayıcı sebep olarak sayılması"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "Anayasa 76. madde milletvekili seçilme yeterliliği şartları",
+      "filter_law_number": "2709"
+    }
+  },
+  {
+    "id": "MEV-002",
+    "difficulty_level": 1,
+    "is_formal_language": false,
+    "category": "İş Hukuku",
+    "query_intent": "Deneme Süresi Üst Sınır Tespiti",
+    "question": "İş yerinde işe yeni başladım, patron deneme süresini en fazla kaç ay yapabilir legally?",
+    "colloquial_mapping": {
+      "patron": "işveren",
+      "legally": "kanunen / mevzuat uyarınca",
+      "deneme süresi": "deneme süreli iş sözleşmesi"
+    },
+    "target_legislation": {
+      "law_number": "4857",
+      "law_title": "İş Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "15"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "4857 deneme süresi",
+      "İş Kanunu 15",
+      "deneme süreli iş sözleşmesi azami süre"
+    ],
+    "gold_answer": "4857 sayılı İş Kanunu'nun 15. maddesine göre, iş sözleşmelerine konulan deneme süresi en çok 2 (iki) ay olabilir. Ancak bu süre toplu iş sözleşmeleri (TİS) ile en fazla 4 (dört) aya kadar uzatılabilir.",
+    "evaluation_criteria": [
+      "İş Kanunu Madde 15 referansı",
+      "Genel kural olarak deneme süresinin en fazla 2 ay olabileceğinin belirtilmesi",
+      "Toplu iş sözleşmesi ile bu sürenin en fazla 4 aya çıkarılabileceği istisnasının eklenmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "4857 sayılı İş Kanunu deneme süresi azami süre madde 15",
+      "filter_law_number": "4857"
+    }
+  },
+  {
+    "id": "MEV-003",
+    "difficulty_level": 1,
+    "is_formal_language": true,
+    "category": "Kişisel Verilerin Korunması Hukuku",
+    "query_intent": "Kanuni Tanımların Tespiti",
+    "question": "6698 sayılı Kişisel Verilerin Korunması Kanunu'na göre 'İlgili Kişi' ve 'Veri Sorumlusu' tanımları neleri ifade eder?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "6698",
+      "law_title": "Kişisel Verilerin Korunması Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "3"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6698&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6698 ilgili kişi tanımı",
+      "6698 veri sorumlusu tanımı",
+      "KVKK madde 3 tanımlar"
+    ],
+    "gold_answer": "6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 3. maddesine göre:\n- İlgili Kişi: Kişisel verisi işlenen gerçek kişiyi ifade eder.\n- Veri Sorumlusu: Kişisel verilerin işleme amaçlarını ve vasıtalarını belirleyen, veri kayıt sisteminin kurulmasından ve yönetilmesinden sorumlu olan gerçek veya tüzel kişiyi ifade eder.",
+    "evaluation_criteria": [
+      "KVKK Madde 3 referansı",
+      "İlgili Kişi tanımında 'gerçek kişi' vurgusunun yer alması",
+      "Veri Sorumlusu tanımında amaç ve vasıtaları belirleme, veri kayıt sistemini yönetme vurgularının bulunması",
+      "Veri sorumlusunun hem gerçek hem tüzel kişi olabileceğinin ifade edilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "6698 KVKK madde 3 ilgili kişi veri sorumlusu tanımı",
+      "filter_law_number": "6698"
+    }
+  },
+  {
+    "id": "MEV-004",
+    "difficulty_level": 1,
+    "is_formal_language": true,
+    "category": "Borçlar Hukuku / Kira Hukuku",
+    "query_intent": "Depozito / Güvence Bedeli Üst Sınırı Tespiti",
+    "question": "Türk Borçlar Kanunu’na göre konut ve çatılı işyeri kiralarında kiracının ödeyeceği depozito (güvence bedeli) en fazla kaç aylık kira bedeli olabilir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "6098",
+      "law_title": "Türk Borçlar Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "342"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "TBK 342",
+      "güvence bedeli depozito en fazla",
+      "kiracının güvence vermesi"
+    ],
+    "gold_answer": "6098 sayılı Türk Borçlar Kanunu'nun 342. maddesine göre, konut ve çatılı işyeri kiralarında sözleşmeyle kiracıya güvence verme borcu getirilmişse, bu güvence bedeli (depozito) 3 (üç) aylık kira bedelini aşamaz.",
+    "evaluation_criteria": [
+      "TBK Madde 342 referansı",
+      "Güvence bedelinin en fazla 3 aylık kira bedeli olabileceğinin açıkça belirtilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "Türk Borçlar Kanunu madde 342 konut çatılı işyeri güvence bedeli depozito",
+      "filter_law_number": "6098"
+    }
+  },
+  {
+    "id": "MEV-005",
+    "difficulty_level": 1,
+    "is_formal_language": false,
+    "category": "Tüketici Hukuku",
+    "query_intent": "Mesafeli Satış Cayma Hakkı Süresi Tespiti",
+    "question": "İnternetten aldığım ayakkabıyı hiç sebep göstermeden iade etmek istiyorum, kaç gün içinde cayma hakkım var?",
+    "colloquial_mapping": {
+      "internetten aldığım ayakkabı": "mesafeli sözleşme / internet satışı",
+      "hiç sebep göstermeden iade etmek": "cayma hakkı"
+    },
+    "target_legislation": {
+      "law_number": "6502",
+      "law_title": "Tüketicinin Korunması Hakkında Kanun / Mesafeli Sözleşmeler Yönetmeliği",
+      "mevzuat_type": "Kanun / Yönetmelik",
+      "article_numbers": [
+        "48",
+        "9 (Yönetmelik)"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6502 mesafeli sözleşme cayma hakkı süresi",
+      "Mesafeli Sözleşmeler Yönetmeliği madde 9",
+      "internet alışverişi iade süresi"
+    ],
+    "gold_answer": "6502 sayılı Tüketicinin Korunması Hakkında Kanun'un 48. maddesi ve Mesafeli Sözleşmeler Yönetmeliği'nin 9. maddesi uyarınca, tüketici internetten yaptığı alışverişlerde malı teslim aldığı tarihten itibaren 14 (ondört) gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin cayma hakkını kullanarak ürünü iade edebilir.",
+    "evaluation_criteria": [
+      "14 gün olan cayma hakkı süresinin doğru belirtilmesi",
+      "Sürenin ürünün teslim alındığı gün başlayacağının ifade edilmesi",
+      "6502 sayılı Kanun m. 48 veya Mesafeli Sözleşmeler Yönetmeliği referansı"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "mesafeli sözleşmeler yönetmeliği cayma hakkı süresi kaç gün",
+      "filter_law_number": "6502"
+    }
+  },
+  {
+    "id": "MEV-006",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "İş Hukuku",
+    "query_intent": "Kıdem ve Yaşa Bağlı Özel İzin Süresi Tespiti",
+    "question": "4857 sayılı İş Kanununa göre 18 yaşından küçük ve 50 yaşından büyük işçilerin yıllık ücretli izin süreleri en az kaç gündür?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "4857",
+      "law_title": "İş Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "53"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "4857 madde 53",
+      "yıllık izin süresi 18 yaş 50 yaş",
+      "İş Kanunu yaşa göre yıllık izin"
+    ],
+    "gold_answer": "4857 sayılı İş Kanunu'nun 53. maddesinin 5. fıkrasına göre, 18 ve daha küçük yaştaki işçiler ile 50 ve daha yukarı yaştaki işçilere verilecek yıllık ücretli izin süresi 20 (yirmi) günden az olamaz.",
+    "evaluation_criteria": [
+      "İş Kanunu Madde 53 referansı",
+      "18 yaşından küçük ve 50 yaşından büyük işçiler için asgari izin süresinin 20 gün olduğunun net şekilde belirtilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "4857 sayılı İş Kanunu madde 53 18 yaş 50 yaş yıllık izin süresi",
+      "filter_law_number": "4857"
+    }
+  },
+  {
+    "id": "MEV-007",
+    "difficulty_level": 2,
+    "is_formal_language": false,
+    "category": "İş Hukuku",
+    "query_intent": "Haklı Nedenle Fesih Hak Düşürücü Süre Tespiti",
+    "question": "İş yerinde patron bana hakaret etti, işten hemen ayrılıp tazminatımı almak istiyorum. Olayı öğrendikten sonra kaç gün içinde bu hakkımı kullanmam lazım?",
+    "colloquial_mapping": {
+      "patron": "işveren",
+      "hakaret etti": "şeref ve namusa dokunacak söz veya davranışlar (m. 24/II-b)",
+      "işten hemen ayrılıp tazminatımı almak": "haklı nedenle derhal fesih ve kıdem tazminatı talebi"
+    },
+    "target_legislation": {
+      "law_number": "4857",
+      "law_title": "İş Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "24",
+        "26"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "4857 madde 24 hakaret",
+      "4857 madde 26 fesih süresi",
+      "haklı neden altı iş günü"
+    ],
+    "gold_answer": "İşverenin hakaret etmesi 4857 sayılı İş Kanunu'nun 24/II-b maddesi gereğince işçiye haklı nedenle derhal fesih hakkı verir ve işçi kıdem tazminatına hak kazanır. Ancak aynı Kanun'un 26. maddesine göre bu fesih hakkının, olayın öğrenildiği günden itibaren 6 (altı) iş günü içinde ve her halde fiilin gerçekleşmesinden itibaren 1 (bir) yıl içinde kullanılması şarttır.",
+    "evaluation_criteria": [
+      "İş Kanunu Madde 24/II ve Madde 26 referansı",
+      "Öğrenme tarihinden itibaren 6 iş günü süre sınırının vurgulanması",
+      "Fiilin gerçekleşmesinden itibaren 1 yıllık azami hak düşürücü sürenin eklenmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "4857 sayılı İş Kanunu derhal fesih hakkını kullanma süresi madde 26 altı iş günü",
+      "filter_law_number": "4857"
+    }
+  },
+  {
+    "id": "MEV-008",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "Devlet Memurları Hukuku",
+    "query_intent": "Aday Memurluk Süresi ve Nakil Yasağı Tespiti",
+    "question": "657 sayılı Devlet Memurları Kanununa göre aday memurluk süresi en az ve en çok ne kadardır ve adaylık süresince nakil yapılabilir mi?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "657",
+      "law_title": "Devlet Memurları Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "54"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "657 madde 54 adaylık süresi",
+      "aday memur nakil yasağı",
+      "aday memurluk en az en çok"
+    ],
+    "gold_answer": "657 sayılı Devlet Memurları Kanunu'nun 54. maddesine göre aday memurluk süresi en az 1 (bir) yıl, en çok 2 (iki) yıldır. Adaylık süresi içinde aday memurların başka kurumlara nakli yapılamaz.",
+    "evaluation_criteria": [
+      "657 sayılı DMK Madde 54 referansı",
+      "Asgari 1 yıl, azami 2 yıl adaylık süresinin açıkça belirtilmesi",
+      "Adaylık süresince başka kuruma nakil yapılamayacağı yasağının vurgulanması"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "657 sayılı DMK madde 54 adaylık süresi ve nakil",
+      "filter_law_number": "657"
+    }
+  },
+  {
+    "id": "MEV-009",
+    "difficulty_level": 2,
+    "is_formal_language": false,
+    "category": "Kat Mülkiyeti Hukuku",
+    "query_intent": "Ortak Yerlerde Yalıtım ve Onarım Karar Yeter Sayısı",
+    "question": "Sitede oturuyorum, apartman yönetimi dış cepheyi boyatıp yalıtım yaptırmak istiyor. Bunun için kat maliklerinin ne kadarlık çoğunluğu gerekiyor?",
+    "colloquial_mapping": {
+      "sitede oturuyorum / apartman yönetimi": "kat mülkiyeti / kat malikleri kurulu",
+      "dış cepheyi boyatıp yalıtım yaptırmak": "ortak yerlerde faydalı yenilik ve ilaveler / ısı yalıtımı"
+    },
+    "target_legislation": {
+      "law_number": "634",
+      "law_title": "Kat Mülkiyeti Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "19",
+        "42"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=634&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "634 madde 42 ısı yalıtımı",
+      "Kat Mülkiyeti dış cephe yalıtım çoğunluk",
+      "KMK ortak yerler faydalı yenilik"
+    ],
+    "gold_answer": "634 sayılı Kat Mülkiyeti Kanunu'nun 42. maddesi uyarınca, binanın ortak yerlerinde yapılacak faydalı yenilik ve ilaveler ile dış cephe mantolama/ısı yalıtımı kararları için kat maliklerinin sayı ve arsa payı çoğunluğu (%50'den fazla salt çoğunluk) gereklidir.",
+    "evaluation_criteria": [
+      "634 sayılı Kat Mülkiyeti Kanunu Madde 42 (veya m. 19) referansı",
+      "Sayı ve arsa payı çoğunluğunun (salt çoğunluk / kat maliklerinin yarısından fazlası) gerektiğinin belirtilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "Kat Mülkiyeti Kanunu madde 42 ortak yerler dış cephe yalıtım karar çoğunluğu",
+      "filter_law_number": "634"
+    }
+  },
+  {
+    "id": "MEV-010",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "Ceza Hukuku",
+    "query_intent": "Gece Vakti Tanımı ve Suçun Nitelikli Hali Artırım Oranı",
+    "question": "5237 sayılı Türk Ceza Kanunu’na göre 'Gece vakti' tanımı nedir ve hırsızlık suçunun gece vakti işlenmesi cezada nasıl bir oran artırımı gerektirir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "5237",
+      "law_title": "Türk Ceza Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "6",
+        "143"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "TCK 6 gece vakti tanımı",
+      "TCK 143 gece vakti hırsızlık artırım",
+      "gece vakti güneşin batması"
+    ],
+    "gold_answer": "5237 sayılı Türk Ceza Kanunu'nun 6/1-e maddesine göre gece vakti; güneşin batmasından bir saat sonra başlayan ve doğmasından bir saat önceye kadar devam eden zaman süresini ifade eder. TCK'nın 143. maddesine göre ise hırsızlık suçunun gece vakti işlenmesi halinde verilecek ceza yarı oranında (1/2) artırılır.",
+    "evaluation_criteria": [
+      "TCK Madde 6/1-e (Güneşin batmasından 1 saat sonra başlayan, doğmasından 1 saat önce biten süre) tanımının verilmesi",
+      "TCK Madde 143 referansı",
+      "Cezanın yarı oranında (1/2) artırılacağının doğru ifade edilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "TCK madde 6 gece vakti tanımı ve madde 143 hırsızlık artırım oranı",
+      "filter_law_number": "5237"
+    }
+  },
+  {
+    "id": "MEV-011",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "Ticaret Hukuku",
+    "query_intent": "Anonim Şirket Asgari Sermaye Sınırları Tespiti",
+    "question": "6102 sayılı Türk Ticaret Kanununa göre Anonim Şirketlerde esas sermaye miktarı en az ne kadar olmalıdır ve kayıtlı sermaye sisteminde asgari sermaye ne kadardır?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "6102",
+      "law_title": "Türk Ticaret Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "332"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6102 TTK 332",
+      "anonim şirket asgari sermaye",
+      "kayıtlı sermaye sistemi başlangıç sermayesi"
+    ],
+    "gold_answer": "6102 sayılı Türk Ticaret Kanunu'nun 332. maddesine göre anonim şirketlerde en az esas sermaye miktarı 50.000 Türk Lirasıdır. Kayıtlı sermaye sistemini kabul etmiş bulunan halka açık olmayan anonim şirketlerde ise başlangıç sermayesi en az 100.000 Türk Lirası olmalıdır. (Not: Kanuni alt sınırlar bunlar olup, Cumhurbaşkanı kararları ile güncel tutarlar artırılabilir).",
+    "evaluation_criteria": [
+      "TTK Madde 332 referansı",
+      "Asgari esas sermayenin kanuni metindeki miktarının (50.000 TL) belirtilmesi",
+      "Kayıtlı sermaye sisteminde başlangıç sermayesinin kanuni metindeki miktarının (100.000 TL) belirtilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "TTK madde 332 anonim şirket en az esas sermaye kayıtlı sermaye",
+      "filter_law_number": "6102"
+    }
+  },
+  {
+    "id": "MEV-012",
+    "difficulty_level": 2,
+    "is_formal_language": false,
+    "category": "Borçlar Hukuku / Kira Hukuku",
+    "query_intent": "Kira Ödenmemesi Nedeniyle Temerrüt İhtarı Süresi",
+    "question": "Kiracım kirayı ödemedi, evi boşaltması için ihtarname çekeceğim. Borcunu ödemesi için kanunen en az kaç gün süre tanımam şart?",
+    "colloquial_mapping": {
+      "kiracım kirayı ödemedi": "kiracının temerrüdü",
+      "evi boşaltması için ihtarname": "fesih ihtarı / ödeme için verilen süre"
+    },
+    "target_legislation": {
+      "law_number": "6098",
+      "law_title": "Türk Borçlar Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "315"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "TBK 315 kiracının temerrüdü",
+      "kira ödenmemesi ihtar süresi",
+      "konut kirasında ödeme süresi 30 gün"
+    ],
+    "gold_answer": "6098 sayılı Türk Borçlar Kanunu'nun 315. maddesi uyarınca, kiracı kira bedelini ödemezse kiraya veren yazılı ihtar çekerek borcun ödenmesi için süre verir. Konut ve çatılı işyeri kiralarında kiracıya verilecek ödeme süresi en az 30 (otuz) gündür. Bu süre içinde ödeme yapılmazsa sözleşme feshedilebilir.",
+    "evaluation_criteria": [
+      "TBK Madde 315 referansı",
+      "Konut ve çatılı işyeri kiralarında kiracıya en az 30 gün süre verilmesi gerektiğinin belirtilmesi",
+      "Sürenin yazılı ihtar ile verilmesi gerektiğinin ifade edilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "Türk Borçlar Kanunu madde 315 kiracının temerrüdü ödeme süresi",
+      "filter_law_number": "6098"
+    }
+  },
+  {
+    "id": "MEV-013",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "Kişisel Verilerin Korunması Hukuku",
+    "query_intent": "Özel Nitelikli Kişisel Veri İşleme Şartları ve İstisnaları",
+    "question": "Kişisel Verilerin Korunması Kanunu uyarınca, özel nitelikli kişisel verilerin ilgili kişinin açık rızası olmaksızın işlenebileceği istisnai durumlar nelerdir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "6698",
+      "law_title": "Kişisel Verilerin Korunması Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "6"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6698&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6698 madde 6",
+      "özel nitelikli kişisel veri açık rıza istisnaları",
+      "KVKK madde 6/3 işleme şartları"
+    ],
+    "gold_answer": "6698 sayılı KVKK'nın 6. maddesi (2024 reformu güncel metni) uyarınca, özel nitelikli kişisel veriler ilgili kişinin açık rızası olmaksızın şu hallerde işlenebilir:\na) Kanunlarda açıkça öngörülmesi,\nb) Fiili imkânsızlık nedeniyle rızasını açıklayamayacak durumda bulunan veya rızasına hukuki geçerlilik tanınmayan kişinin kendisinin ya da bir başkasının hayatı veya beden bütünlüğünün korunması için zorunlu olması,\nc) İlgili kişinin alenileştirdiği kişisel verilere ilişkin ve alenileştirme iradesine uygun olması,\nç) Bir hakkın tesisi, kullanılması veya korunması için zorunlu olması,\nd) Sır saklama yükümlülüğü altındaki kişiler veya yetkili kurum ve kuruluşlarca kamu sağlığının korunması, koruyucu hekimlik, tıbbi teşhis, tedavi ve bakım hizmetlerinin yürütülmesi amacıyla işlenmesi,\ne) İstihdam, iş sağlığı ve güvenliği, sosyal güvenlik ile sosyal yardım alanlarındaki hukuki yükümlülüklerin yerine getirilmesi için zorunlu olması,\nf) Siyasi, felsefi, dini veya sendikal amaçlı vakıf, dernek ve diğer kâr amacı gütmeyen kuruluşların kendi üyelerine/mensuplarına yönelik faaliyetleri.",
+    "evaluation_criteria": [
+      "KVKK Madde 6 referansı",
+      "Kanunlarda açıkça öngörülme, fiili imkansızlık, alenileştirilme ve hak tesisi/korunması gibi temel istisnaların sayılması",
+      "Sağlık ve cinsel hayata ilişkin veriler için özel yetkili kurum/sır saklama yükümlülüğü istisnasının belirtilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "6698 sayılı KVKK madde 6 özel nitelikli kişisel verilerin açık rıza olmaksızın işlenmesi şartları",
+      "filter_law_number": "6698"
+    }
+  },
+  {
+    "id": "MEV-014",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "Sosyal Güvenlik Hukuku",
+    "query_intent": "İş Kazası Bildirim Süresi (SGK)",
+    "question": "5510 sayılı Kanuna göre iş kazasının işveren tarafından Sosyal Güvenlik Kurumuna bildirilme azami süresi nedir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "5510",
+      "law_title": "Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "13"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "5510 madde 13 iş kazası bildirimi",
+      "SGK iş kazası bildirim süresi 3 iş günü",
+      "iş kazasının kuruma bildirimi"
+    ],
+    "gold_answer": "5510 sayılı Kanunun 13. maddesine göre iş kazasının işveren tarafından o yer yetkili kolluk kuvvetlerine DERHAL, Sosyal Güvenlik Kurumuna (SGK) ise kazadan sonraki 3 (üç) iş günü içinde bildirilmesi zorunludur.",
+    "evaluation_criteria": [
+      "5510 sayılı Kanun Madde 13 referansı",
+      "SGK'ya bildirimin kazadan sonraki 3 iş günü içinde yapılacağının doğru ifade edilmesi",
+      "Kolluk kuvvetlerine derhal bildirim detayının eklenmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "5510 sayılı Kanun madde 13 iş kazası bildirim süresi SGK",
+      "filter_law_number": "5510"
+    }
+  },
+  {
+    "id": "MEV-015",
+    "difficulty_level": 2,
+    "is_formal_language": true,
+    "category": "İş Sağlığı ve Güvenliği Hukuku",
+    "query_intent": "İSG Kayıt ve Bildirim Yükümlülüğü Süresi",
+    "question": "6331 sayılı İş Sağlığı ve Güvenliği Kanununa göre işverenin iş kazası ve meslek hastalıklarını tutma ve SGK'ya bildirme yükümlülüğünün zaman sınırı nedir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "6331",
+      "law_title": "İş Sağlığı ve Güvenliği Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "14"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6331&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6331 madde 14",
+      "iş sağlığı ve güvenliği iş kazası bildirim",
+      "meslek hastalığı bildirim süresi 3 iş günü"
+    ],
+    "gold_answer": "6331 sayılı İş Sağlığı ve Güvenliği Kanunu'nun 14. maddesine göre işveren:\na) İş kazalarını kazadan sonraki 3 (üç) iş günü içinde,\nb) Sağlık hizmeti sunucuları veya işyeri hekimi tarafından kendisine intikal ettirilen meslek hastalıklarını, öğrendiği tarihten itibaren 3 (üç) iş günü içinde SGK'ya bildirmekle yükümlüdür.",
+    "evaluation_criteria": [
+      "6331 sayılı Kanun Madde 14 referansı",
+      "İş kazası için kazadan sonraki 3 iş günü süresinin yazılması",
+      "Meslek hastalığı için öğrendiği tarihten itibaren 3 iş günü süresinin yazılması"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "6331 sayılı Kanun madde 14 iş kazası ve meslek hastalığı bildirim süresi",
+      "filter_law_number": "6331"
+    }
+  },
+  {
+    "id": "MEV-016",
+    "difficulty_level": 3,
+    "is_formal_language": true,
+    "category": "İş Hukuku / Karşılaştırmalı İş Mevzuatı",
+    "query_intent": "Çapraz Kanun Karşılaştırması ve Tavan Ücret Tespiti",
+    "question": "4857 sayılı İş Kanunu ile 5953 sayılı Basın İş Kanunu karşılaştırıldığında, gazetecilerin kıdem tazminatına hak kazanması için gereken asgari çalışma süresi ile genel işçilerin süresi arasındaki fark nedir ve gazetecilerde kıdem tazminatı tavanı uygulanır mı?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "5953 / 4857",
+      "law_title": "Basın Mesleğinde Çalışanlarla Çalıştıranlar Arasındaki Münasebetlerin Tanzimi Hakkında Kanun (5953) / İş Kanunu (4857)",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "6 (5953)",
+        "120 / Mülga 1475 m.14 (4857)"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5953&MevzuatTur=1&MevzuatTertip=3"
+    },
+    "expected_search_keywords": [
+      "5953 kıdem tazminatı süresi gazeteci",
+      "Basın İş Kanunu 5 yıl kıdem",
+      "kıdem tazminatı tavanı gazeteciler"
+    ],
+    "gold_answer": "4857 sayılı İş Kanunu (ve halen yürürlükteki 1475/14. mad.) uyarınca genel işçilerin kıdem tazminatına hak kazanabilmesi için aynı işverene bağlı asgari çalışma süresi 1 (bir) yıldır ve kıdem tazminatında yıllık tavan (Kıdem Tazminatı Tavanı) uygulanır.\n\nAncak 5953 sayılı Basın İş Kanunu'nun 6. maddesine göre gazetecilerin kıdem tazminatına hak kazanabilmesi için meslekte en az 5 (beş) yıl çalışmış olması şarttır. Ayrıca Basın İş Kanunu'nda kıdem tazminatı için herhangi bir tavan sınırlaması yoktur, gazetecinin son giydirilmiş brüt ücreti üzerinden sınır olmaksızın hesaplanır.",
+    "evaluation_criteria": [
+      "Genel işçiler için asgari kıdem süresinin 1 yıl, gazeteciler (5953) için 5 yıl olduğunun vurgulanması",
+      "Genel işçilerde kıdem tazminatı tavanı uygulanırken, Basın İş Kanunu'na tabi gazetecilerde kıdem tazminatı tavanı olmadığını açıkça belirtmesi",
+      "Basın İş Kanunu Madde 6 referansı"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "5953 sayılı Basın İş Kanunu madde 6 gazeteci kıdem tazminatı süresi ve tavanı",
+      "filter_law_number": "5953"
+    }
+  },
+  {
+    "id": "MEV-017",
+    "difficulty_level": 3,
+    "is_formal_language": false,
+    "category": "Fikrî ve Sınai Mülkiyet Hukuku",
+    "query_intent": "Çalışan Buluşu vs Serbest Buluş Ayrımı ve Şirket Hak Talebi Usulü",
+    "question": "Bir şirkette yazılımcıyım, mesai saatleri dışında kendi laptopımla uygulama geliştirdim. Şirket bu uygulamanın haklarının kendisine ait olduğunu iddia ediyor. 6769 sayılı Sınai Mülkiyet Kanunu ve FSEK'e göre çalışan buluşlarında hak sahipliği kime aittir, şirket buna nasıl el koyabilir?",
+    "colloquial_mapping": {
+      "kendi laptopımla uygulama geliştirdim": "serbest eser / serbest buluş",
+      "şirket buna nasıl el koyabilir": "hizmet buluşunda hak talebi / tam hak talebi usulü ve bedel ödeme"
+    },
+    "target_legislation": {
+      "law_number": "6769 / 5846",
+      "law_title": "Sınai Mülkiyet Kanunu (6769) / Fikir ve Sanat Eserleri Kanunu (5846)",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "113",
+        "114",
+        "115 (6769)",
+        "18 (5846)"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6769&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "6769 hizmet buluşu serbest buluş",
+      "SMK 113 çalışan buluşları",
+      "FSEK 18 bilgisayar programı çalışanın eseri"
+    ],
+    "gold_answer": "1. FSEK & SMK Kapsamı: Yazılımlar (bilgisayar programları) telif boyutuyla FSEK m. 18/2 gereği işverenin iş gördürme yetkisi dahilinde yapılmışsa hakları işverene aittir. Ancak teknik bir buluş/patent boyutu var ise 6769 sayılı SMK uygulanır.\n2. Hizmet Buluşu vs. Serbest Buluş: SMK m. 113'e göre bir çalışan buluşu, çalışanın işte yükümlü olduğu faaliyet gereği veya işletmenin büyük ölçüde deneyim/imkanlarına dayanarak yapılmışsa 'Hizmet Buluşu'dur. İş ilişkisi dışında, mesai saatleri dışında, şirket imkanları kullanılmadan yapılan buluşlar 'Serbest Buluş' sayılır (SMK m. 113/2).\n3. Şirketin Hak Talebi Usulü: Şirket hak iddia edecekse bunun hizmet buluşu olduğunu öne sürmelidir. Çalışanın bildirimi üzerine işveren 4 ay içinde yazılı olarak tam veya kısmi hak talebinde bulunabilir (SMK m. 115). Hak talebinde bulunursa işveren çalışana makul bir bedel/tazminat ödemek ZORUNDADIR. Eğer gerçekten tamamen bağımsız ve serbest buluş niteliğindeyse hak tamamen çalışana aittir.",
+    "evaluation_criteria": [
+      "SMK Madde 113 kapsamında Hizmet Buluşu ve Serbest Buluş ayırımının yapılması",
+      "İş yeri imkanları dışında, mesai harici yapılan uygulamanın serbest buluş/eser olma ihtimalinin vurgulanması",
+      "İşverenin hak talep edebilmesi için 4 ay içinde yazılı talepte bulunması ve çalışana makul bir bedel ödemesi gerektiğinin ifade edilmesi",
+      "FSEK m. 18 / SMK m. 115 kanun maddesi referanslarının sunulması"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "6769 sayılı SMK madde 113 114 115 hizmet buluşu serbest buluş bildirim ve hak talebi",
+      "filter_law_number": "6769"
+    }
+  },
+  {
+    "id": "MEV-018",
+    "difficulty_level": 3,
+    "is_formal_language": true,
+    "category": "Ceza Hukuku / Bilişim Suçları",
+    "query_intent": "Suç Tipleri Karşılaştırması ve Nitelikli Hal Artırımı",
+    "question": "5237 sayılı TCK’da düzenlenen 'Bilişim sistemine girme' (m. 243) suçu ile 'Sistemi engelleme, bozma, verileri yok etme veya değiştirme' (m. 244) suçu arasındaki temel unsur farkları nelerdir ve banka/kredi kurumlarına ait sistemlerde ceza artırımı nasıl hesaplanır?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "5237",
+      "law_title": "Türk Ceza Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "243",
+        "244"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "TCK 243 bilişim sistemine girme",
+      "TCK 244 verileri yok etme bozma",
+      "TCK 244/3 banka veya kredi kurumu ceza artırımı"
+    ],
+    "gold_answer": "1. Unsur Farkı: TCK m. 243 (Bilişim sistemine girme), sisteme yetkisiz girmeyi veya kalmayı cezalandıran sırf hareket suçudur (zarar oluşması şart değildir). TCK m. 244 ise sistemin işleyişini engelleme, bozma, verileri silme, değiştirme veya erişilmez kılma gibi zarar verici ve neticeli eylemleri kapsar.\n2. Banka / Kredi Kurumu Artırımı: TCK m. 244/3 uyarınca, bu fiillerin bir banka veya kredi kurumuna ya da kamu kurum ve kuruluşuna ait bilişim sistemi üzerinde işlenmesi halinde verilecek ceza YARI ORANINDA (1/2) artırılır.",
+    "evaluation_criteria": [
+      "TCK 243'ün sadece girmeyi/kalmayı kapsadığı, TCK 244'ün ise engelleme/bozma/veri değiştirme gibi zararlı sonuçları kapsadığının farkının belirtilmesi",
+      "Banka veya kredi kurumlarına ait sistemlerde cezanın yarı oranında (1/2) artırılacağının ifade edilmesi",
+      "TCK Madde 243 ve 244 referanslarının eksiksiz sunulması"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "5237 TCK madde 243 244 bilişim suçları banka kredi kurumu artırım oranı",
+      "filter_law_number": "5237"
+    }
+  },
+  {
+    "id": "MEV-019",
+    "difficulty_level": 3,
+    "is_formal_language": true,
+    "category": "İdari Yargılama Hukuku",
+    "query_intent": "Şart Tespiti ve İtiraz Süresi/Makamı Karşılaştırması",
+    "question": "2577 sayılı İdari Yargılama Usulü Kanunu (İYUK) uyarınca idari işlemin iptali davasında yürütmenin durdurulması kararı verilebilmesi için gereken ikili şart nedir ve bu karara karşı kaç gün içinde nereye itiraz edilebilir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "2577",
+      "law_title": "İdari Yargılama Usulü Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "27"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "2577 İYUK 27 yürütmenin durdurulması",
+      "yürütmeyi durdurma ikili şartı",
+      "YD kararına itiraz süresi 7 gün"
+    ],
+    "gold_answer": "2577 sayılı İYUK'un 27. maddesinin 2. fıkrasına göre yürütmenin durdurulması kararı verilebilmesi için şu iki şartın BİRLİKTE (kumulatif) gerçekleşmesi gerekir:\n1) İdari işlemin uygulanması halinde telafisi güç veya imkânsız zararların doğması,\n2) İdari işlemin açıkça hukuka aykırı olması.\n\nİtiraz Süresi ve Makamı: Yürütmenin durdurulması istemleri hakkındaki kararlara karşı, kararın tebliğini izleyen günden itibaren 7 (yedi) gün içinde Bölge İdare Mahkemesine (veya Danıştay dava dairelerine) bir defaya mahsus olmak üzere itiraz edilebilir.",
+    "evaluation_criteria": [
+      "İYUK Madde 27 referansı",
+      "İkili şartın (Telafisi güç/imkansız zarar VE açıkça hukuka aykırılık) eksiksiz sayılması",
+      "İtiraz süresinin 7 gün olduğunun yazılması",
+      "İtiraz merci olarak Bölge İdare Mahkemesi (veya Danıştay) olduğunun ifade edilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "2577 sayılı İYUK madde 27 yürütmenin durdurulması şartları ve itiraz süresi",
+      "filter_law_number": "2577"
+    }
+  },
+  {
+    "id": "MEV-020",
+    "difficulty_level": 3,
+    "is_formal_language": true,
+    "category": "İş Hukuku / Usul Hukuku",
+    "query_intent": "Zorunlu Arabuluculuk Dava Açma Süresi ve Zamanaşımı Durma Etkisi",
+    "question": "İş uyuşmazlıklarında zorunlu arabuluculuk sürecinde, son tutanağın düzenlenmesinden itibaren dava açma hak düşürücü süresi nedir ve arabuluculuk bürosuna başvuru ile son tutanak arasındaki zamanda zamanaşımı nasıl etkilenir?",
+    "colloquial_mapping": null,
+    "target_legislation": {
+      "law_number": "7036",
+      "law_title": "İş Mahkemeleri Kanunu",
+      "mevzuat_type": "Kanun",
+      "article_numbers": [
+        "3"
+      ],
+      "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=7036&MevzuatTur=1&MevzuatTertip=5"
+    },
+    "expected_search_keywords": [
+      "7036 madde 3 dava açma süresi 2 hafta",
+      "arabuluculuk son tutanak dava açma",
+      "arabuluculuk zamanaşımı durması"
+    ],
+    "gold_answer": "7036 sayılı İş Mahkemeleri Kanunu'nun 3. maddesi uyarınca:\n1) Arabuluculuk faaliyeti sonunda anlaşmaya varılamaması hâlinde, son tutanağın düzenlendiği tarihten itibaren 2 (iki) hafta içinde iş mahkemesinde dava açılabilir.\n2) Arabuluculuk bürosuna başvurulmasından son tutanağın düzenlendiği tarihe kadar geçen sürede zamanaşımı durur ve hak düşürücü süre işlemez.",
+    "evaluation_criteria": [
+      "7036 sayılı İş Mahkemeleri Kanunu Madde 3 referansı",
+      "Son tutanaktan itibaren dava açma süresinin 2 hafta olduğunun belirtilmesi",
+      "Arabuluculuk sürecinde zamanaşımının durduğu ve hak düşürücü sürenin işlemediğinin ifade edilmesi"
+    ],
+    "expected_mcp_tool_calls": {
+      "suggested_query": "7036 sayılı İş Mahkemeleri Kanunu madde 3 arabuluculuk dava açma süresi zamanaşımı",
+      "filter_law_number": "7036"
+    }
+  }
+]

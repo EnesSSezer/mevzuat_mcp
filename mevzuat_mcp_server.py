@@ -44,6 +44,7 @@ app = FastMCP(
     "9 legislation types: Kanun, KHK, Tüzük, Kurum Yönetmeliği, Tebliğ, CB Kararnamesi, CB Kararı, CB Yönetmeliği, CB Genelgesi. "
     "Each type has search and search_within tools. search_within supports keyword (AND/OR/NOT) and semantic search (TÜBİTAK embeddings endpoint). "
     "IMPORTANT: These search tools are keyword-based (not by law number) - use 'katma değer vergisi' not '3065'. "
+    "Mevzuat maddelerinde geçen sürelerle ilgili bilgi verirken, ilgili maddede başka bir maddeye (örn. Madde 26) atıf varsa, o maddeyi de sorgulamadan ve süre türünü (hak düşürücü süre mi, zamanaşımı mı) doğrulamadan yanıt üretme."
     "\n\n"
 )
 

@@ -47,6 +47,8 @@ DEFAULT_SYSTEM_PROMPT = (
     "CRITICAL: keyword search is SUBSTRING MATCHING, not "
     "semantic search - an unquoted multi-word query matches as ONE LITERAL "
     "PHRASE, not 'these words somewhere.' Use AND to combine words instead.\n\n"
+    "ALWAYS USE YOUR MCP TOOLS if question is regarded to turkish legislation"
+    "DO NOT ANSWER FROM YOUR INTERNAL TRAINING DATA ONLY USE THE TOOLS!"
 
     "SEARCH STRATEGY:\n"
     "1. Convert the question to 1-3 core Turkish legal keywords, not natural language.\n"
