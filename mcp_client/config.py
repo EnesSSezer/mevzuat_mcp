@@ -13,9 +13,9 @@ from typing import List
 @dataclass
 class LLMConfig:
     base_url: str = os.getenv(
-        "TUBITAK_CHAT_BASE_URL", "https://ai-api.tubitak.gov.tr/vllm/gptoss-120b/v1"
+        "TUBITAK_CHAT_BASE_URL", "https://ai-api.tubitak.gov.tr/vllm/qwen3coder-80b/v1"
     )
-    model: str = os.getenv("TUBITAK_CHAT_MODEL", "GPTOSS-120B")
+    model: str = os.getenv("TUBITAK_CHAT_MODEL", "Qwen3Coder-80B")
     api_key: str = os.getenv("TUBITAK_API_KEY", "EMPTY")
     temperature: float = float(os.getenv("TUBITAK_CHAT_TEMPERATURE", "0.2"))
     request_timeout_s: float = float(os.getenv("TUBITAK_CHAT_TIMEOUT_S", "60"))

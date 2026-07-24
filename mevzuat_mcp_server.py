@@ -15,6 +15,14 @@ from mevzuat_models import (
     MevzuatSearchResultNew,
     MevzuatArticleContent
 )
+from yargitay_client import YargitayOfficialApiClient, YargitayRateLimited
+from yargitay_models import (
+    YargitayDetailedSearchRequest,
+    YargitayApiSearchResponse,
+    CleanYargitayDecisionEntry,
+    CompactYargitaySearchResult,
+    YargitayDocumentMarkdown
+)
 from article_search import search_articles_by_keyword, ArticleSearchResult, format_search_results, _matches_query, search_plain_text_articles
 
 # Semantic search (optional, requires the TÜBİTAK embeddings endpoint + `openai` package)
@@ -36,9 +44,9 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 app = FastMCP(
-    name="MevzuatGovTrMCP",
-    instructions="MCP server for Turkish legislation search and content retrieval. "
-    "ONLY data source: mevzuat.gov.tr (21 tools, Playwright-based). "
+    name="MevzuatYargiMCP",
+    instructions="MCP server for Turkish legislation (mevzuat.gov.tr) search and Yargıtay jurisprudence (karararama.yargitay.gov.tr) search. "
+    "Data sources: mevzuat.gov.tr (21 tools) & karararama.yargitay.gov.tr (2 tools). "
     "\n\n"
     "== mevzuat.gov.tr tools (21 tools) ==\n"
     "9 legislation types: Kanun, KHK, Tüzük, Kurum Yönetmeliği, Tebliğ, CB Kararnamesi, CB Kararı, CB Yönetmeliği, CB Genelgesi. "
@@ -46,10 +54,16 @@ app = FastMCP(
     "IMPORTANT: These search tools are keyword-based (not by law number) - use 'katma değer vergisi' not '3065'. "
     "Mevzuat maddelerinde geçen sürelerle ilgili bilgi verirken, ilgili maddede başka bir maddeye (örn. Madde 26) atıf varsa, o maddeyi de sorgulamadan ve süre türünü (hak düşürücü süre mi, zamanaşımı mı) doğrulamadan yanıt üretme."
     "\n\n"
+    "== Yargıtay jurisprudence tools (2 tools) ==\n"
+    "search_yargitay_detailed: Search Yargıtay decision jurisprudence with 52 chamber filters, Esas/Karar numbers, and date ranges.\n"
+    "get_yargitay_document_markdown: Retrieve clean Markdown decision document by ID."
+    "\n\n"
 )
 
-# Initialize client with caching enabled (1 hour TTL by default)
+# Initialize clients with caching enabled (1 hour TTL by default)
 mevzuat_client = MevzuatApiClientNew(cache_ttl=3600, enable_cache=True)
+yargitay_client_instance = YargitayOfficialApiClient(request_timeout=60.0, cache_ttl=3600, enable_cache=True)
+
 
 # Tertip fallback order: try requested tertip first, then alternatives
 TERTIP_FALLBACK_ORDER = ["5", "3"]
@@ -2223,6 +2237,129 @@ async def search_within_cbgenelge(
     except Exception as e:
         logger.exception(f"Error in tool 'search_within_cbgenelge' for {mevzuat_no}")
         return f"An unexpected error occurred: {str(e)}"
+
+
+# ============================================================================
+# Yargıtay (Court of Cassation) Decision Search & Document Tools
+# ============================================================================
+
+@app.tool(
+    description="Use this when searching Turkish Court of Cassation (Yargıtay) decisions. Supports 52 chamber filtering and advanced operators (+required, -excluded, \"exact phrase\").",
+    annotations={
+        "readOnlyHint": True,
+        "openWorldHint": True,
+        "idempotentHint": True
+    }
+)
+async def search_yargitay_detailed(
+    arananKelime: str = Field("", description="Turkish search keyword. Supports +required -excluded \"exact phrase\" operators"),
+    birimYrgKurulDaire: str = Field("ALL", description="Chamber selection (52 options: Civil/Criminal chambers, General Assemblies)"),
+    esasYil: str = Field("", description="Case year for 'Esas No'."),
+    esasIlkSiraNo: str = Field("", description="Starting sequence number for 'Esas No'."),
+    esasSonSiraNo: str = Field("", description="Ending sequence number for 'Esas No'."),
+    kararYil: str = Field("", description="Decision year for 'Karar No'."),
+    kararIlkSiraNo: str = Field("", description="Starting sequence number for 'Karar No'."),
+    kararSonSiraNo: str = Field("", description="Ending sequence number for 'Karar No'."),
+    baslangicTarihi: str = Field("", description="Start date for decision search (DD.MM.YYYY)."),
+    bitisTarihi: str = Field("", description="End date for decision search (DD.MM.YYYY)."),
+    pageNumber: int = Field(1, ge=1, description="Page number to retrieve.")
+) -> CompactYargitaySearchResult:
+    """Search Yargıtay decisions using primary API with 52 chamber filtering and advanced operators."""
+    pageSize = 10
+
+    search_query = YargitayDetailedSearchRequest(
+        arananKelime=arananKelime,
+        birimYrgKurulDaire=birimYrgKurulDaire,
+        esasYil=esasYil,
+        esasIlkSiraNo=esasIlkSiraNo,
+        esasSonSiraNo=esasSonSiraNo,
+        kararYil=kararYil,
+        kararIlkSiraNo=kararIlkSiraNo,
+        kararSonSiraNo=kararSonSiraNo,
+        baslangicTarihi=baslangicTarihi,
+        bitisTarihi=bitisTarihi,
+        pageSize=pageSize,
+        pageNumber=pageNumber
+    )
+
+    logger.info(f"Tool 'search_yargitay_detailed' called for phrase: '{arananKelime}'")
+    try:
+        api_response = await yargitay_client_instance.search_detailed_decisions(search_query)
+        if api_response and api_response.data and api_response.data.data:
+            clean_decisions = [
+                CleanYargitayDecisionEntry(
+                    id=decision.id,
+                    daire=decision.daire,
+                    esasNo=decision.esasNo,
+                    kararNo=decision.kararNo,
+                    kararTarihi=decision.kararTarihi,
+                    document_url=decision.document_url
+                )
+                for decision in api_response.data.data
+            ]
+            hint_str = "HINT: To view the full text of any decision, use 'get_yargitay_document_markdown(id=...)' with the decision's 'id' field."
+            return CompactYargitaySearchResult(
+                decisions=clean_decisions,
+                total_records=api_response.data.recordsTotal,
+                requested_page=search_query.pageNumber,
+                page_size=search_query.pageSize,
+                hint=hint_str
+            )
+        # Surface API error metadata (e.g. ADALET_RUNTIME_EXCEPTION) instead of
+        # silently returning "0 results" with a generic hint.
+        error_hint = "No decisions matched your search criteria."
+        if api_response and api_response.metadata:
+            meta = api_response.metadata
+            if meta.get("FMTY") == "ERROR":
+                error_detail = meta.get("FMU") or meta.get("FMTE") or "Unknown API error"
+                error_hint = f"Yargıtay API error: {error_detail}"
+        logger.warning("API response for Yargitay search did not contain expected data structure.")
+        return CompactYargitaySearchResult(
+            decisions=[],
+            total_records=0,
+            requested_page=search_query.pageNumber,
+            page_size=search_query.pageSize,
+            hint=error_hint
+        )
+    except YargitayRateLimited as e:
+        logger.warning(f"Rate limited in search_yargitay_detailed: {e}")
+        return CompactYargitaySearchResult(
+            decisions=[],
+            total_records=0,
+            requested_page=search_query.pageNumber,
+            page_size=search_query.pageSize,
+            hint=f"Rate limit hit. Please retry after {e.retry_after:.1f} seconds."
+        )
+    except Exception as e:
+        logger.exception("Error in tool 'search_yargitay_detailed'.")
+        raise
+
+
+@app.tool(
+    description="Use this when retrieving full text of a Yargıtay (Court of Cassation) decision. Returns clean Markdown format.",
+    annotations={
+        "readOnlyHint": True,
+        "idempotentHint": True
+    }
+)
+async def get_yargitay_document_markdown(id: str) -> YargitayDocumentMarkdown:
+    """Get Yargıtay decision text as Markdown. Use ID from search results."""
+    logger.info(f"Tool 'get_yargitay_document_markdown' called for ID: {id}")
+    if not id or not id.strip():
+        raise ValueError("Document ID must be a non-empty string.")
+    try:
+        return await yargitay_client_instance.get_decision_document_as_markdown(id)
+    except YargitayRateLimited as e:
+        logger.warning(f"Rate limited in get_yargitay_document_markdown: {e}")
+        return YargitayDocumentMarkdown(
+            id=id,
+            markdown_content=f"Rate limit encountered. Please wait {e.retry_after:.1f} seconds before requesting.",
+            source_url=f"{yargitay_client_instance.BASE_URL}/getDokuman?id={id}"
+        )
+    except Exception as e:
+        logger.exception("Error in tool 'get_yargitay_document_markdown'.")
+        raise
+
 
 def main():
     logger.info(f"Starting {app.name} server...")

@@ -42,10 +42,10 @@
     "is_formal_language": false,
     "category": "İş Hukuku",
     "query_intent": "Deneme Süresi Üst Sınır Tespiti",
-    "question": "İş yerinde işe yeni başladım, patron deneme süresini en fazla kaç ay yapabilir legally?",
+    "question": "İş yerinde işe yeni başladım, patron deneme süresini kanunen en fazla kaç ay yapabilir?",
     "colloquial_mapping": {
       "patron": "işveren",
-      "legally": "kanunen / mevzuat uyarınca",
+      "kanunen": "kanunen / mevzuat uyarınca",
       "deneme süresi": "deneme süreli iş sözleşmesi"
     },
     "target_legislation": {
@@ -520,11 +520,14 @@
   {
     "id": "MEV-016",
     "difficulty_level": 3,
-    "is_formal_language": true,
+    "is_formal_language": false,
     "category": "İş Hukuku / Karşılaştırmalı İş Mevzuatı",
     "query_intent": "Çapraz Kanun Karşılaştırması ve Tavan Ücret Tespiti",
-    "question": "4857 sayılı İş Kanunu ile 5953 sayılı Basın İş Kanunu karşılaştırıldığında, gazetecilerin kıdem tazminatına hak kazanması için gereken asgari çalışma süresi ile genel işçilerin süresi arasındaki fark nedir ve gazetecilerde kıdem tazminatı tavanı uygulanır mı?",
-    "colloquial_mapping": null,
+    "question": "Bir gazete şirketinde muhabir olarak çalışıyorum. Normal bir fabrika işçisi ile gazetecinin kıdem tazminatına hak kazanması için gereken asgari çalışma süreleri aynı mıdır? Ayrıca gazetecilerin kıdem tazminatında bir tavan sınırı uygulanır mı?",
+    "colloquial_mapping": {
+      "gazete şirketinde muhabir": "5953 sayılı Basın İş Kanununa tabi gazeteci",
+      "normal fabrika işçisi": "4857 sayılı İş Kanununa tabi işçi"
+    },
     "target_legislation": {
       "law_number": "5953 / 4857",
       "law_title": "Basın Mesleğinde Çalışanlarla Çalıştıranlar Arasındaki Münasebetlerin Tanzimi Hakkında Kanun (5953) / İş Kanunu (4857)",
@@ -557,9 +560,9 @@
     "is_formal_language": false,
     "category": "Fikrî ve Sınai Mülkiyet Hukuku",
     "query_intent": "Çalışan Buluşu vs Serbest Buluş Ayrımı ve Şirket Hak Talebi Usulü",
-    "question": "Bir şirkette yazılımcıyım, mesai saatleri dışında kendi laptopımla uygulama geliştirdim. Şirket bu uygulamanın haklarının kendisine ait olduğunu iddia ediyor. 6769 sayılı Sınai Mülkiyet Kanunu ve FSEK'e göre çalışan buluşlarında hak sahipliği kime aittir, şirket buna nasıl el koyabilir?",
+    "question": "Bir yazılım şirketinde tam zamanlı geliştiriciyim. Mesai saatleri dışında kendi bilgisayarımla bir mobil uygulama geliştirdim. Şirket bu uygulamanın haklarının kendisine ait olduğunu iddia ediyor. Mevzuata göre çalışan buluşlarında hak sahipliği kime aittir, şirket buna hangi şartlarla ve nasıl el koyabilir?",
     "colloquial_mapping": {
-      "kendi laptopımla uygulama geliştirdim": "serbest eser / serbest buluş",
+      "kendi bilgisayarımla uygulama geliştirdim": "serbest eser / serbest buluş",
       "şirket buna nasıl el koyabilir": "hizmet buluşunda hak talebi / tam hak talebi usulü ve bedel ödeme"
     },
     "target_legislation": {
@@ -594,11 +597,14 @@
   {
     "id": "MEV-018",
     "difficulty_level": 3,
-    "is_formal_language": true,
+    "is_formal_language": false,
     "category": "Ceza Hukuku / Bilişim Suçları",
     "query_intent": "Suç Tipleri Karşılaştırması ve Nitelikli Hal Artırımı",
-    "question": "5237 sayılı TCK’da düzenlenen 'Bilişim sistemine girme' (m. 243) suçu ile 'Sistemi engelleme, bozma, verileri yok etme veya değiştirme' (m. 244) suçu arasındaki temel unsur farkları nelerdir ve banka/kredi kurumlarına ait sistemlerde ceza artırımı nasıl hesaplanır?",
-    "colloquial_mapping": null,
+    "question": "Bir bilişim sistemine yetkisizce sadece girmek ile o sistemdeki verileri bozup engellemek suçları arasında ne fark vardır? Eğer bu eylem bir bankanın sistemine yapılırsa verilecek ceza nasıl değişir?",
+    "colloquial_mapping": {
+      "sadece girmek": "bilişim sistemine girme (TCK m. 243)",
+      "verileri bozup engellemek": "sistemi engelleme, bozma, verileri yok etme veya değiştirme (TCK m. 244)"
+    },
     "target_legislation": {
       "law_number": "5237",
       "law_title": "Türk Ceza Kanunu",
@@ -628,11 +634,14 @@
   {
     "id": "MEV-019",
     "difficulty_level": 3,
-    "is_formal_language": true,
+    "is_formal_language": false,
     "category": "İdari Yargılama Hukuku",
     "query_intent": "Şart Tespiti ve İtiraz Süresi/Makamı Karşılaştırması",
-    "question": "2577 sayılı İdari Yargılama Usulü Kanunu (İYUK) uyarınca idari işlemin iptali davasında yürütmenin durdurulması kararı verilebilmesi için gereken ikili şart nedir ve bu karara karşı kaç gün içinde nereye itiraz edilebilir?",
-    "colloquial_mapping": null,
+    "question": "Devletin/idarenin yaptığı bir işlemin iptali için dava açtığımızda, mahkemenin 'yürütmeyi durdurma' kararı verilebilmesi için hangi iki şartın bir arada bulunması gerekir? Bu karara karşı kaç gün içinde nereye itiraz edilebilir?",
+    "colloquial_mapping": {
+      "devletin/idarenin yaptığı işlem": "idari işlem / iptal davası",
+      "yürütmeyi durdurma": "İYUK m. 27 yürütmenin durdurulması"
+    },
     "target_legislation": {
       "law_number": "2577",
       "law_title": "İdari Yargılama Usulü Kanunu",
@@ -662,11 +671,14 @@
   {
     "id": "MEV-020",
     "difficulty_level": 3,
-    "is_formal_language": true,
+    "is_formal_language": false,
     "category": "İş Hukuku / Usul Hukuku",
     "query_intent": "Zorunlu Arabuluculuk Dava Açma Süresi ve Zamanaşımı Durma Etkisi",
-    "question": "İş uyuşmazlıklarında zorunlu arabuluculuk sürecinde, son tutanağın düzenlenmesinden itibaren dava açma hak düşürücü süresi nedir ve arabuluculuk bürosuna başvuru ile son tutanak arasındaki zamanda zamanaşımı nasıl etkilenir?",
-    "colloquial_mapping": null,
+    "question": "İşverenimle yaşadığım tazminat uyuşmazlığı için zorunlu arabulucuya başvurduk fakat anlaşamadık. Son tutanak tutulduktan sonra dava açmak için kaç haftamız var ve arabuluculuk süreci zamanaşımını nasıl etkiler?",
+    "colloquial_mapping": {
+      "zorunlu arabulucu": "7036 sayılı İş Mahkemeleri Kanunu zorunlu arabuluculuk",
+      "son tutanak": "arabuluculuk son tutanağı"
+    },
     "target_legislation": {
       "law_number": "7036",
       "law_title": "İş Mahkemeleri Kanunu",
