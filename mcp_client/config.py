@@ -19,6 +19,8 @@ class LLMConfig:
     api_key: str = os.getenv("TUBITAK_API_KEY", "EMPTY")
     temperature: float = float(os.getenv("TUBITAK_CHAT_TEMPERATURE", "0.2"))
     request_timeout_s: float = float(os.getenv("TUBITAK_CHAT_TIMEOUT_S", "60"))
+    force_tool_choice: str = os.getenv("LLM_FORCE_TOOL_CHOICE", "required")
+    require_tool_before_answer: bool = os.getenv("LLM_REQUIRE_TOOL_BEFORE_ANSWER", "true").lower() in ("1", "true", "yes")
 
 
 @dataclass

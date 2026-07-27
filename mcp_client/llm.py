@@ -68,7 +68,7 @@ def parse_prompt_tool_calls(text: str) -> List[Dict[str, Any]]:
     return tool_calls
 
 
-def format_tools_system_prompt(tools: List[Dict[str, Any]]) -> str:
+def format_tools_system_prompt(tools: List[Dict[str, Any]], must_use_tool: bool = False) -> str:
     """
     Format tools into a text prompt for models without working native tool
     calling. Emits the FULL JSON Schema per tool (not just param names/types)
@@ -90,10 +90,16 @@ def format_tools_system_prompt(tools: List[Dict[str, Any]]) -> str:
         "```json",
         '{"tool": "tool_name", "arguments": {"param1": "value1"}}',
         "```",
-        "If no tool is needed, just answer normally in plain text - do not force a tool call.",
+    ]
+    if must_use_tool:
+        lines.append("CRITICAL: You MUST call one of the available MCP tools. Do NOT answer directly from memory. Output ONLY a JSON block with your tool call.")
+    else:
+        lines.append("If no tool is needed, just answer normally in plain text - do not force a tool call.")
+        
+    lines.extend([
         "",
         "Tool schemas (JSON Schema format - required fields, types, and guidance are in here):",
-    ]
+    ])
     for t in tools:
         fn = t.get("function", {})
         name = fn.get("name")
@@ -121,7 +127,7 @@ class LLMClient:
         if self._use_fallback:
             logger.info(f"LLM_FORCE_PROMPT_BASED_TOOLS set - skipping native tool-calling attempts for '{config.model}'.")
 
-    async def chat(self, messages: List[Dict[str, Any]], tools: Optional[List[Dict[str, Any]]]) -> Dict[str, Any]:
+    async def chat(self, messages: List[Dict[str, Any]], tools: Optional[List[Dict[str, Any]]], tool_choice: Optional[Any] = None) -> Dict[str, Any]:
         """
         Sends one chat completion request. Automatically falls back to prompt-based
         tool calling if the endpoint fails or returns empty response for native tools.
@@ -137,16 +143,20 @@ class LLMClient:
             return {"role": "assistant", "content": msg.content}
 
         if self._use_fallback:
-            return await self._chat_prompt_based(messages, tools)
+            return await self._chat_prompt_based(messages, tools, must_use_tool=(tool_choice == "required"))
 
         try:
-            response = await self.client.chat.completions.create(
-                model=self.config.model,
-                messages=messages,
-                tools=tools,
-                temperature=self.config.temperature,
-                timeout=self.config.request_timeout_s,
-            )
+            kwargs = {
+                "model": self.config.model,
+                "messages": messages,
+                "tools": tools,
+                "temperature": self.config.temperature,
+                "timeout": self.config.request_timeout_s,
+            }
+            if tool_choice is not None:
+                kwargs["tool_choice"] = tool_choice
+                
+            response = await self.client.chat.completions.create(**kwargs)
             choice = response.choices[0]
             message = choice.message
 
@@ -178,17 +188,39 @@ class LLMClient:
                 "Switching to prompt-based tool calling fallback for the rest of this session."
             )
             self._use_fallback = True
-            return await self._chat_prompt_based(messages, tools)
+            return await self._chat_prompt_based(messages, tools, must_use_tool=(tool_choice == "required"))
 
         except Exception as e:
+            if tool_choice == "required":
+                logger.warning(f"Native tool call failed with tool_choice='required' ({e}). Retrying without tool_choice...")
+                try:
+                    kwargs.pop("tool_choice", None)
+                    response = await self.client.chat.completions.create(**kwargs)
+                    choice = response.choices[0]
+                    message = choice.message
+                    
+                    result: Dict[str, Any] = {"role": "assistant", "content": message.content}
+                    if message.tool_calls:
+                        result["tool_calls"] = [{"id": tc.id, "type": "function", "function": {"name": tc.function.name, "arguments": tc.function.arguments}} for tc in message.tool_calls]
+                        return result
+                    
+                    if message.content and message.content.strip():
+                        parsed = parse_prompt_tool_calls(message.content)
+                        if parsed:
+                            result["tool_calls"] = parsed
+                        return result
+                        
+                except Exception as retry_e:
+                    logger.warning(f"Retry without tool_choice also failed ({retry_e}).")
+
             logger.warning(f"Native tool call request failed ({e}). Switching to prompt-based tool calling fallback.")
             self._use_fallback = True
-            return await self._chat_prompt_based(messages, tools)
+            return await self._chat_prompt_based(messages, tools, must_use_tool=(tool_choice == "required"))
 
-    async def _chat_prompt_based(self, messages: List[Dict[str, Any]], tools: List[Dict[str, Any]]) -> Dict[str, Any]:
+    async def _chat_prompt_based(self, messages: List[Dict[str, Any]], tools: List[Dict[str, Any]], must_use_tool: bool = False) -> Dict[str, Any]:
         """Executes tool calling by embedding full tool schemas in the system prompt."""
         fallback_messages = [dict(m) for m in messages]
-        tools_prompt = format_tools_system_prompt(tools)
+        tools_prompt = format_tools_system_prompt(tools, must_use_tool=must_use_tool)
 
         if fallback_messages and fallback_messages[0]["role"] == "system":
             fallback_messages[0]["content"] += "\n" + tools_prompt

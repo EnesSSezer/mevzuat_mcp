@@ -47,10 +47,10 @@ DEFAULT_SYSTEM_PROMPT = (
     "CRITICAL: keyword search is SUBSTRING MATCHING, not "
     "semantic search - an unquoted multi-word query matches as ONE LITERAL "
     "PHRASE, not 'these words somewhere.' Use AND to combine words instead.\n\n"
-    "ALWAYS USE YOUR MCP TOOLS if question is regarded to turkish legislation"
-    "DO NOT ANSWER FROM YOUR INTERNAL TRAINING DATA ONLY USE THE TOOLS!"
-
-    "SEARCH STRATEGY:\n"
+    "CRITICAL MANDATE: NEVER answer any Turkish legal, legislation, law, or article "
+    "question using your internal training memory. ALL answers MUST be derived "
+    "exclusively from information retrieved via MCP tool calls. On the initial "
+    "question, you MUST issue a search tool call immediately.\n\n"    "SEARCH STRATEGY:\n"
     "1. Convert the question to 1-3 core Turkish legal keywords, not natural language.\n"
     "2. Prefer the shortest distinctive keyword first (e.g. 'vergi' before 'vergi usul kanunu').\n"
     "3. If a search returns 0 results or you're clearly not converging, do NOT retry "
@@ -148,6 +148,7 @@ class Agent:
 
     async def _agent_loop(self) -> str:
         tool_specs = self.transport.openai_tool_specs()
+        tool_calls_executed_in_turn = 0
 
         while True:
             self._round_index += 1
@@ -172,15 +173,30 @@ class Agent:
                 hard_max_tokens=self.config.resilience.hard_max_context_tokens,
             )
 
+            tool_choice = "auto"
+            if tool_calls_executed_in_turn == 0:
+                tool_choice = self.config.llm.force_tool_choice
+
             await self._emit(AgentEvent(type=EventType.LLM_THINKING))
-            assistant_msg = await self.llm.chat(self.state.messages, tool_specs)
+            assistant_msg = await self.llm.chat(self.state.messages, tool_specs, tool_choice=tool_choice)
             self.state.add_message(assistant_msg)
 
             tool_calls = assistant_msg.get("tool_calls")
             if not tool_calls:
+                if tool_calls_executed_in_turn == 0 and self.config.llm.require_tool_before_answer:
+                    logger.warning("Agent Catch Guard: LLM returned text without tools on round 1. Reprompting.")
+                    guard_msg = {
+                        "role": "user",
+                        "content": "CRITICAL SYSTEM ERROR: You attempted to answer directly without using any MCP legislation tools. You are FORCED to use an MCP search tool first to retrieve official legal texts before providing an answer. Call a tool now."
+                    }
+                    self.state.add_message(guard_msg)
+                    continue
+
                 answer = assistant_msg.get("content") or ""
                 await self._emit(AgentEvent(type=EventType.FINAL_ANSWER, detail=answer))
                 return answer
+
+            tool_calls_executed_in_turn += len(tool_calls)
 
             # Independent tool calls in one turn are executed concurrently.
             results = await asyncio.gather(*[
